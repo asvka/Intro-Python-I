@@ -8,9 +8,9 @@ Write a program that accepts user input of the form
 and does the following:
  - If the user doesn't specify any input, your program should
    print the calendar for the current month. The 'datetime'
-   module may be helpful for this.
+   module may be helpful for this. x
  - If the user specifies one argument, assume they passed in a
-   month and render the calendar for that month of the current year.
+   month and render the calendar for that month of the current year. x
  - If the user specifies two arguments, assume they passed in
    both the month and the year. Render the calendar for that
    month and year.
@@ -30,3 +30,24 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+
+
+def cal(x):
+    date_list = x.split(' ')
+    print(date_list)
+
+    default_month = datetime.now().month
+    default_year = datetime.now().year
+
+    if x == '':
+      print(calendar.TextCalendar().formatmonth(default_year, default_month))
+
+    elif len(date_list) == 1:
+          print(calendar.TextCalendar().formatmonth(int(default_year), int(date_list[0])))
+    
+    else:
+          print(calendar.TextCalendar().formatmonth(int(date_list[1]), int(date_list[0])))
+
+y = input("Input the month and year : ")
+cal(y)
